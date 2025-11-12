@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package co.touchlab.skie.plugin.shim.impl
 
 import co.touchlab.skie.plugin.SkieTarget
@@ -15,14 +13,12 @@ import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
 import org.gradle.api.attributes.AttributeContainer
 import org.gradle.api.attributes.Usage
-import org.jetbrains.kotlin.gradle.dsl.KotlinNativeArtifact
 import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import org.jetbrains.kotlin.gradle.plugin.mpp.Framework
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinUsages
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFrameworkTask
-import org.jetbrains.kotlin.gradle.targets.native.tasks.artifact.kotlinArtifactsExtension
 import org.jetbrains.kotlin.gradle.tasks.FatFrameworkTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinNativeLink
 import org.jetbrains.kotlin.gradle.utils.NativeCompilerDownloader
@@ -117,11 +113,7 @@ class ActualKgpShim(
     }
 
     private fun initializeArtifactTargets() {
-        project.kotlinArtifactsExtension.artifacts.withType<KotlinNativeArtifact>().configureEach {
-            val artifactTargets = ActualSkieArtifactTarget.createFromArtifact(this, project)
-
-            skieTargets.addAll(artifactTargets)
-        }
+        initializeArtifactTargetsIfExist(project, skieTargets)
     }
 
     override fun resolvablePropertyString(properties: Properties, key: String, suffix: String?): String? =

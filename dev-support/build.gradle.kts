@@ -2,7 +2,8 @@ plugins {
     id("dev.root")
 //     kotlin("multiplatform") version "2.2.0" apply false
 //     kotlin("multiplatform") version "2.2.20" apply false
-    kotlin("multiplatform") version "2.2.21" apply false
+//     kotlin("multiplatform") version "2.2.21" apply false
+    kotlin("multiplatform") version "2.3.0-Beta2" apply false
 }
 
 buildscript {

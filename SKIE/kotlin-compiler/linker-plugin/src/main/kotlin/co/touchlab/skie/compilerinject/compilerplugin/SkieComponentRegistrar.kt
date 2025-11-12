@@ -5,12 +5,10 @@ import co.touchlab.skie.context.InitPhaseContext
 import co.touchlab.skie.entrypoint.registerSkieIrGenerationExtensionIfNeeded
 import co.touchlab.skie.phases.InitPhase
 import co.touchlab.skie.spi.SkiePluginLoader
-import org.jetbrains.kotlin.backend.common.extensions.IrGenerationExtension
-import org.jetbrains.kotlin.compiler.plugin.CompilerPluginRegistrar
 import org.jetbrains.kotlin.config.CompilerConfiguration
 import kotlin.time.measureTime
 
-class SkieComponentRegistrar : CompilerPluginRegistrar() {
+class SkieComponentRegistrar : BaseSkieComponentRegistrar() {
 
     override val supportsK2: Boolean = false
 
